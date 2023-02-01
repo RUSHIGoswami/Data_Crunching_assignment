@@ -1,7 +1,10 @@
+# Importing the library
 import pandas as pd
 import time
-
+import psutil
 '''Here I will iteratively chunk the file in small amounts and concat them in iterations, but due to less time I am having i am uploading this much only but will complete this for sure.'''
+
+'''Here I am using '''
 start = time.time()
 tsv1 = pd.read_csv("user_email_hash.1m.tsv", sep='\t', chunksize=100000)
 tsv2 = pd.read_csv("ip_1m.tsv", sep='\t', chunksize=100000)
@@ -19,4 +22,7 @@ startMerge = time.time()
 opnew = pd.merge(user, plain, how='left', on='email')
 optsv = pd.merge(opnew, ip, how='left', on='id')
 endMerge = time.time()
+print('The CPU usage is: ', psutil.cpu_percent(4))
+print('RAM Used (GB):', psutil.virtual_memory()[3]/1000000000)
 optsv.to_csv('output.tsv', sep='\t')
+print(endMerge - start)
