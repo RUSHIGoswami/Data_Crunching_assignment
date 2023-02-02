@@ -15,7 +15,7 @@ tsv1 = pd.read_csv("user_email_hash.1m.tsv", sep='\t', dtype={'id': object})
 tsv2 = pd.read_csv("ip_1m.tsv", sep='\t', dtype={'id': object, 'ip_address': object})
 
 columns = ['email', 'plain_pass']
-tsv3 = pd.read_csv("plain_32m.tsv", header=None, names=columns, sep='\t', nrows=2900000)
+tsv3 = pd.read_csv("plain_32m.tsv", header=None, names=columns, sep='\t', nrows=2800000)
 end = time.time()
 warnings.simplefilter(action='ignore', category=FutureWarning) # With this unwanted warning won't be displayed due to very large inputs.
 
